@@ -20,7 +20,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@man
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-app.use(viewCount)
+// app.use(viewCount) // application level middleware
 
 app.use('/api/v1/tools', toolsRouter)
 

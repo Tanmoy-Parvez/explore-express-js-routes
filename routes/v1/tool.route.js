@@ -1,5 +1,6 @@
 const express = require('express');
 const toolsController = require('../../controllers/v1/tools.controllers');
+const { viewCount } = require('../../middleware/viewCount');
 const router = express.Router();
 
 /* router.get("/", (req, res) => { 
@@ -19,7 +20,7 @@ router.route("/")
 
     .post(toolsController.saveATool)
 
-router.route("/:id").get(toolsController.getAllToolsById)
+router.route("/:id").get(viewCount, toolsController.getAllToolsById)
 
 
 module.exports = router;
