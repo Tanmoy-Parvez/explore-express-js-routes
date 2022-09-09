@@ -6,6 +6,7 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const toolsRouter = require('./routes/v1/tool.route');
 
 const port = process.env.PORT || 5000;
 
@@ -18,10 +19,10 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@man
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-
+app.use('/tools', toolsRouter)
 
 // verify function for jwt
-const verifyToken = (req, res, next) => {
+/* const verifyToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
     console.log(authHeader);
     if (!authHeader) {
@@ -36,12 +37,12 @@ const verifyToken = (req, res, next) => {
         next();
     });
 
-}
+} */
 
 
 const run = async () => {
     try {
-        await client.connect();
+        /* await client.connect();
         console.log('database connected');
 
         // collections
@@ -251,11 +252,13 @@ const run = async () => {
             res.send(result);
         })
 
+    
+    
+
+ */
     } finally {
 
     }
-
-
 
 }
 run().catch(console.dir)
