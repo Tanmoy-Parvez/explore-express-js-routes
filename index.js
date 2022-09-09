@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const toolsRouter = require('./routes/v1/tool.route');
+const { viewCount } = require('./middleware/viewCount');
 
 const port = process.env.PORT || 5000;
 
@@ -18,6 +19,8 @@ app.use(express.json());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@manufacturer-website.ex4nj.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+
+app.use(viewCount)
 
 app.use('/api/v1/tools', toolsRouter)
 

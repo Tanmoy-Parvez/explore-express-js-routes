@@ -19,4 +19,7 @@ router.route("/")
 
     .post(toolsController.saveATool)
 
+router.route("/:id").get(toolsController.getAllToolsById)
+
+
 module.exports = router;
