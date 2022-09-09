@@ -263,11 +263,13 @@ const run = async () => {
 }
 run().catch(console.dir)
 
-
+app.all("*", (req, res) => { 
+    res.send("No routes found")
+})
 
 
 app.get('/', (req, res) => {
-    res.send("server running");
+    res.send("Server is running on port " + port);
 });
 
 

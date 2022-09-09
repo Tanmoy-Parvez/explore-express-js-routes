@@ -1,4 +1,5 @@
 const express = require('express');
+const toolsController = require('../../controllers/v1/tools.controllers');
 const router = express.Router();
 
 /* router.get("/", (req, res) => { 
@@ -14,12 +15,8 @@ router.post("/", (req, res) => {
 }) */
 
 router.route("/")
-    .get((req, res) => {
-        res.send("Get all tools from server")
-    })
+    .get(toolsController.getAllTools)
 
-    .post((req, res) => {
-        res.send("Create a new tool")
-    })
+    .post(toolsController.saveATool)
 
 module.exports = router;
